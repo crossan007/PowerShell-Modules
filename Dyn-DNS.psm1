@@ -184,12 +184,15 @@ param(
 $ZoneRecords = Get-AllZones -Token $token | %{ Get-AllZoneRecords -ZoneName $_.ZoneName -Token $Token}
 $ZoneRecords | %{ Set-RecordTTL -RecordURL $_.RecordURL -ttl 14400 -token $token}
 #>
-	$data = @{
-		ttl = $ttl
+	if ($RecordURL -notlike "/REST/SOA*")
+	{
+		$data = @{
+			ttl = $ttl
+		}
+		$body = $data | ConvertTo-JSON
+		$response = Invoke-RestMethod -Uri "https://api.dynect.net$($RecordURL)" -Method Put -ContentType "application/json" -Headers @{"Auth-Token"="$Token"} -Body $body
+		$response
 	}
-	$body = $data | ConvertTo-JSON
-	$response = Invoke-RestMethod -Uri "https://api.dynect.net$($RecordURL)" -Method Put -ContentType "application/json" -Headers @{"Auth-Token"="$Token"} -Body $body
-	$response
 
 }
 
