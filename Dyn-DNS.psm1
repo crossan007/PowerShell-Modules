@@ -330,7 +330,12 @@ $token
 		}
 		else
 		{
-			Get-RecordDetails -ZoneName $z -Token $Token
+			$records = Get-AllZoneRecords -ZoneName $z.ZoneName -Token $token
+			Foreach ($Record in $records) 
+			{
+				Write-Host $($Record)
+				Get-RecordDetails -RecordURL $($Record.RecordURL) -Token $Token
+			}
 		}
 	}
 }
