@@ -5,7 +5,7 @@ API Documentation found here: https://help.dyn.com/dns-api-knowledge-base/
 
 Full REST resource set found here: https://help.dyn.com/rest-resources/
 ##SharePoint.psm1
-###Process-ExtractedCWP
+###Process-ExtractedCMP
 ####SYNOPSIS 
 Process the directory of an uncompressed SharePoint Web Backup 
 

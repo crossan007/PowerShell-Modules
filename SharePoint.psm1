@@ -32,7 +32,7 @@ Param($manifest)
 	} 
 }
 
-Function Process-ExtractedCWP{
+Function Process-ExtractedCMP{
 <#
 .SYNOPSIS 
 Process the directory of an uncompressed SharePoint Web Backup 
